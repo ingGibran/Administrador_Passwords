@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>admin</title>
+    <style>
+
+
+        .header {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .subtitulo {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+        }
+
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: azure;
+        }
+
+        .formulario {
+            text-align: center;
+        }
+
+        .form_contrasenia {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 15px;
+            padding:10px;
+            margin:5px;
+            font-size: 15px;
+        }
+
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 50px;
+        }
+
+        .item {
+            
+            margin:10px;
+            border: solid 1px;
+            background-color:lightgoldenrodyellow;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .boton {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            border: black solid 1px;
+            border-radius: 15px;
+            padding:10px;
+            margin:5px;
+        }
+
+        .dago {
+            padding:5px
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{% static 'administrador/logo.png' %}" style="width: 80px;">
+        <h1>Administrador de Contraseñas</h1>
+    </div>
+
+    <form method="POST" class="formulario">
+
+        <div class="subtitulo">
+            <img src="{% static 'administrador/agregar.png' %}" style="width:40px;">
+            <h2>Agregar Contraseña</h2>
+        </div>
+        
+
+        {% csrf_token %}
+        {{ form.servicio }}
+        
+        {{ form.email }}
+        <br>
+        {{ form.usuario_servicio }}
+        
+        {{ form.contrasenia }}
+        <br>
+        <button type="submit" class="boton" style="background-color:lightgreen; font-size: 20px;">Agregar</button>
+    </form><hr>
+
+    <div class="subtitulo">
+        <img src="{% static 'administrador/registro.png' %}" style="width: 50px;">
+        <h2>Contraseñas Registradas</h2>
+    </div>
+
+    <div class="contenedor">
+    {% for contrasenia in contrasenias %}
+        <div class="item">
+            <strong class="dato">{{ contrasenia.servicio }}</strong><br>
+            <span class="dato">{{ contrasenia.usuario_servicio }}</span><br>
+            <span class="dato"><em>{{ contrasenia.email }}</em></span><br>
+            <span class="dato">{{ contrasenia.contrasenia }}</span><br>
+            <form action="{% url 'editar_contrasenia' contrasenia.pk %}">
+                <button class="boton" style="background-color: lightblue;">Editar</button>
+            </form>
+            <button class="boton" style="background-color: red;">Eliminar</button>
+        </div>
+        {% empty %}
+            <p>Aún no hay contraseñas guardadas</p>
+        {% endfor %}
+    </div>
+    
+
+    <br>
+    <form action="{% url 'iniciar_sesion' %}" style="text-align: center;">
+        <button class="boton" style="background-color: yellow; font-size: 20px; width: 100px;">Salir</button>
+    </form>
+
+
+</body>
+</html>

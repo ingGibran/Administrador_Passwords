@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>registro</title>
+    <style>
+
+        .header {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .subtitulo {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+        }
+
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: azure;
+        }
+
+        .formulario {
+            text-align: center;
+        }
+
+        .form_usuario {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 15px;
+            padding:10px;
+            margin:5px;
+            font-size: 15px;
+        }
+
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 50px;
+        }
+
+        .item {
+            
+            margin:10px;
+            border: solid 1px;
+            background-color:lightgoldenrodyellow;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .boton {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            border: black solid 1px;
+            border-radius: 15px;
+            padding:10px;
+            margin:5px;
+            background-color: lightgreen;
+        }
+
+        .formulario {
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{% static 'administrador/logo.png' %}" style="width: 80px;">
+        <h1>Administrador de Contraseñas</h1>
+    </div>
+
+    <div class="subtitulo">
+        <img src="{% static 'administrador/usuario.png' %}" style="width:50px; padding: 10px;">
+        <h2>Crear Cuenta</h2>
+    </div>
+
+    <form method="POST" class="formulario">
+        {% csrf_token %}
+        <label>Nombre de Usuario:</label>
+        {{ form.username }}
+        <br>
+        <label>Contraseña: </label>
+        {{ form.password1 }}
+        <br>
+        <label>Confirmar Contraseña:</label>
+        {{ form.password2 }}
+        <br>
+        <button type="submit" class="boton">Continuar</button>
+    </form>
+    
+    <p style="text-align: center;">¿Tienes una cuenta? <a href="{% url 'iniciar_sesion' %}">Inicia Sesión</a></p>
+</body>
+</html>
