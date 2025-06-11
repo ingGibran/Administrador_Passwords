@@ -116,7 +116,9 @@
             <form action="{% url 'editar_contrasenia' contrasenia.pk %}">
                 <button class="boton" style="background-color: lightblue;">Editar</button>
             </form>
-            <button class="boton" style="background-color: red;">Eliminar</button>
+            <form action="{% url 'eliminar' contrasenia.pk %}">
+                <button class="boton" style="background-color: red;">Eliminar</button>
+            </form>
         </div>
         {% empty %}
             <p>Aún no hay contraseñas guardadas</p>

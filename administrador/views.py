@@ -59,3 +59,9 @@ def editar(request, pk):
         'form':form,
         'contrasenia':contrasenia
     })
+
+@login_required
+def eliminar(request, pk):
+    contrasenia = get_object_or_404(Contrasenia, pk=pk)
+    contrasenia.delete()
+    return redirect('administrador')
