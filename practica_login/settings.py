@@ -132,5 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-ALLOWED_HOSTS = ['administrador-contraseanas.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['administrador-passwords.onrender.com', '127.0.0.1']
 
