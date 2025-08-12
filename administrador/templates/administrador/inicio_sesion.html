@@ -69,6 +69,10 @@
             background-color: lightgreen;
         }
 
+        .errores {
+            color:red;
+        }
+
 
     </style>
 </head>
@@ -88,11 +92,25 @@
     <form method="POST" class="formulario">
         {% csrf_token %}
         <label>Nombre de Usuario:</label>
-            {{ form.username }}
-            <br>
+        {{ form.username }}
+        <div class="errores">
+            {{ form.username.errors }}
+        </div>
+        <br>
         <label>Contraseña: </label>
-            {{ form.password }}
-            <br>
+        {{ form.password }}
+        <div class="errores">
+            {{ form.password.errors }}
+        </div>
+        <br>
+
+        {% if form.non_field_errors %}
+            <div class="errores">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
         <button type="submit" class="boton">Entrar</button>
     </form>
     

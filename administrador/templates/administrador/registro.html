@@ -73,6 +73,10 @@
             padding: 10px;
         }
 
+        .errores {
+            color:red;
+        }
+
     </style>
 </head>
 <body>
@@ -91,13 +95,27 @@
         {% csrf_token %}
         <label>Nombre de Usuario:</label>
         {{ form.username }}
+        <div class="errores">
+            {{ form.username.errors }}
+        </div>
         <br>
         <label>Contraseña: </label>
         {{ form.password1 }}
+        <div class="errores">
+            {{ form.password1.errors }}
+        </div>
         <br>
         <label>Confirmar Contraseña:</label>
         {{ form.password2 }}
+        <div class="errores">
+            {{ form.password2.errors }}
+        </div>
         <br>
+
+        
+
+
+
         <button type="submit" class="boton">Continuar</button>
     </form>
     
