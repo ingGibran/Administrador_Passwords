@@ -18,6 +18,16 @@ Un administrador de contraseñas para guardar gestionar de forma sencilla.
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" width="60" height="60" />
     <p>SQLite</p>
   </div>
+  
+  <div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="60" height="60" />
+    <p>HTML5</p>
+  </div>
+
+  <div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="60" height="60" />
+    <p>CSS3</p>
+  </div>
 
 </p>
 
@@ -46,3 +56,4 @@ Un administrador de contraseñas para guardar gestionar de forma sencilla.
 <p align="center">
   <img src="imagenes_readme/modificar.png" alt="Logo" width="500">
 </p>
+
